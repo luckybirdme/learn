@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Redux basic example</title>
+    <script src="https://unpkg.com/redux@latest/dist/redux.min.js"></script>
+  </head>
+  <body>
+    <div>
+      <p>
+        increment: <span id="increment-value">0</span> 
+        <button id="increment"> +1 </button>
+      </p >
+      <p>
+        multiply: <span id="multiply-value">1</span> 
+        <button id="multiply"> *2 </button>
+      </p >
+    </div>
+    <script>
+      	
+      // 定义 action
+      var INCREMENT='INCREMENT'
+      var MULTIPLY ='MULTIPLY'
+      var incrementAction = {
+        type:INCREMENT
+      }
+      var multiplyAction = {
+        type:MULTIPLY
+      }
+
+      // 定义 reducer
+      function incrementReducer(state, action){
+        if (typeof state === 'undefined') {
+          return 0
+        }
+        switch (action.type) {
+          case INCREMENT:
+            return state + 1
+          default:
+            return state
+        }
+      }
+      function multiplyReducer(state, action){
+        if (typeof state === 'undefined') {
+          return 1
+        }
+        switch (action.type) {
+          case MULTIPLY:
+            return state * 2
+          default:
+            return state
+        }
+      }
+      var combineReducers = Redux.combineReducers({
+        increment: incrementReducer,
+        multiply: multiplyReducer
+      });
+
+      // 创建 store
+      var store = Redux.createStore(combineReducers)
+
+      
+      // 订阅 store 变化
+      function viewSubcribe() {
+        var increment = document.getElementById('increment-value')
+        var multiply = document.getElementById('multiply-value')
+        var state = store.getState();
+        increment.innerHTML = state.increment.toString()
+        multiply.innerHTML = state.multiply.toString()
+        
+      }
+      store.subscribe(viewSubcribe)
+
+
+      // 绑定点击事件, 触发 dispatch 计数 action
+      document.getElementById('increment').addEventListener('click', function () {
+          store.dispatch(incrementAction)
+      })
+      document.getElementById('multiply').addEventListener('click', function () {
+          store.dispatch(multiplyAction)
+      })
+
+    </script>
+  </body>
+</html>
