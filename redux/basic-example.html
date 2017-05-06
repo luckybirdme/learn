@@ -50,6 +50,7 @@
             return state
         }
       }
+      // 合并 Reducer
       var combineReducers = Redux.combineReducers({
         increment: incrementReducer,
         multiply: multiplyReducer
@@ -59,23 +60,27 @@
       var store = Redux.createStore(combineReducers)
 
       
-      // 订阅 store 变化
+      // View 订阅函数
       function viewSubcribe() {
         var increment = document.getElementById('increment-value')
         var multiply = document.getElementById('multiply-value')
+        // 获取 store 的数据
         var state = store.getState();
         increment.innerHTML = state.increment.toString()
         multiply.innerHTML = state.multiply.toString()
         
       }
+      // 订阅 store 变化
       store.subscribe(viewSubcribe)
 
 
       // 绑定点击事件, 触发 dispatch 计数 action
       document.getElementById('increment').addEventListener('click', function () {
+          // 传递 Action ，触发数据更改
           store.dispatch(incrementAction)
       })
       document.getElementById('multiply').addEventListener('click', function () {
+          // 传递 Action ，触发数据更改
           store.dispatch(multiplyAction)
       })
 
