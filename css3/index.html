@@ -2,14 +2,111 @@
 <html>
 <head>
 <style> 
-#t-background-image
+body
 {
 background-image:url(/learn/css3/bg_flower.gif),url(/learn/css3/bg_flower_2.gif);
 }
+h1
+{
+text-shadow: 5px 5px 5px #FF0000;
+}
+
+div#div1,div#div2
+{
+width:100px;
+height:75px;
+background-color:yellow;
+border:1px solid black;
+}
+div#div2
+{
+transform:rotate(30deg);
+-ms-transform:rotate(30deg); /* IE 9 */
+-moz-transform:rotate(30deg); /* Firefox */
+-webkit-transform:rotate(30deg); /* Safari and Chrome */
+-o-transform:rotate(30deg); /* Opera */
+}
+
+div#div3
+{
+width:100px;
+height:100px;
+background:yellow;
+transition:width 2s, height 2s;
+-moz-transition:width 2s, height 2s, -moz-transform 2s; /* Firefox 4 */
+-webkit-transition:width 2s, height 2s, -webkit-transform 2s; /* Safari and Chrome */
+-o-transition:width 2s, height 2s, -o-transform 2s; /* Opera */
+}
+
+div#div3:hover
+{
+width:200px;
+height:200px;
+transform:rotate(180deg);
+-moz-transform:rotate(180deg); /* Firefox 4 */
+-webkit-transform:rotate(180deg); /* Safari and Chrome */
+-o-transform:rotate(180deg); /* Opera */
+}
+
+
+
+div#div4
+{
+width:100px;
+height:100px;
+background:red;
+animation:myfirst 5s;
+-moz-animation:myfirst 5s; /* Firefox */
+-webkit-animation:myfirst 5s; /* Safari and Chrome */
+-o-animation:myfirst 5s; /* Opera */
+}
+
+@keyframes myfirst
+{
+0%   {background:red;}
+25%  {background:yellow;}
+50%  {background:blue;}
+100% {background:green;}
+}
+
+@-moz-keyframes myfirst /* Firefox */
+{
+0%   {background:red;}
+25%  {background:yellow;}
+50%  {background:blue;}
+100% {background:green;}
+}
+
+@-webkit-keyframes myfirst /* Safari and Chrome */
+{
+0%   {background:red;}
+25%  {background:yellow;}
+50%  {background:blue;}
+100% {background:green;}
+}
+
+@-o-keyframes myfirst /* Opera */
+{
+0%   {background:red;}
+25%  {background:yellow;}
+50%  {background:blue;}
+100% {background:green;}
+}
+
+
 </style>
 </head>
 <body>
-<div id="t-background-image">
-  </div>
+<h1>文本阴影效果！</h1>
+<div id="div1">你好。这是一个 div 元素。</div>
+
+<div id="div2">你好。这是一个 div 元素。</div>
+
+
+<div id="div3">请把鼠标指针放到黄色的 div 元素上，来查看过渡效果。</div>
+
+
+<div id="div4"></div>
+
 </body>
 </html>
