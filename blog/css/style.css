@@ -308,7 +308,7 @@ body {
   font-weight: bold;
 }
 #header {
-  height: 300px;
+  height: auto;
   position: relative;
   border-bottom: 1px solid #ddd;
 }
@@ -328,7 +328,6 @@ body {
   background: linear-gradient(rgba(0,0,0,0.2), transparent);
 }
 #header:after {
-  bottom: 0;
   background: -webkit-linear-gradient(transparent, rgba(0,0,0,0.2));
   background: -moz-linear-gradient(transparent, rgba(0,0,0,0.2));
   background: -ms-linear-gradient(transparent, rgba(0,0,0,0.2));
